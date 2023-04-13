@@ -12,6 +12,14 @@ const Login = require('../Model/loginModel');
 const client = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
 
+
+module.exports.a=async(req,res)=>{
+    res.status(200).json({"message":true});
+}
+
+
+
+
 //for otp genertartion
 module.exports.signUp = async (req, res) => {
     try {
