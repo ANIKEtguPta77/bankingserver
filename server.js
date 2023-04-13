@@ -16,6 +16,6 @@ mongoose.connect("mongodb://aniket:aniket@ac-ybdhgco-shard-00-00.fr0rpod.mongodb
 
 const port=process.env.PORT;
 
-app.listen(port,()=>{
-    console.log(`App running on${port}`)
+app.listen(PORT,()=>{
+    console.log(`App running on${PORT}`)
 })
