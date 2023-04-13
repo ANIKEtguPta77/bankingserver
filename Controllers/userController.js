@@ -310,7 +310,7 @@ module.exports.transactions = async (req, res) => {
 
             //updating linedata
             const date = new Date();
-            const day = date.getDay();
+            const day = date.getDate();
             linedata1.map((item, index) => {
 
                 if (Number(item.x) >= day) {
