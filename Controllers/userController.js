@@ -9,7 +9,7 @@ const Otp = require('../Model/otpModel');
 const Login = require('../Model/loginModel');
 
 
-const client = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
+// const client = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
 
 
@@ -39,13 +39,13 @@ module.exports.signUp = async (req, res) => {
         });
         const number = req.body.number;
         console.log(OTP);
-        const me = await client.messages
-            .create({
-                body: `Otp  -${OTP}`,
-                messagingServiceSid: 'MG2696cee6900054b082573a57248e838a',
-                to: `+91${number}`
-            })
-            .then(message => console.log(message.sid))
+        // const me = await client.messages
+        //     .create({
+        //         body: `Otp  -${OTP}`,
+        //         messagingServiceSid: 'MG2696cee6900054b082573a57248e838a',
+        //         to: `+91${number}`
+        //     })
+        //     .then(message => console.log(message.sid))
 
 
         const otp = new Otp({
@@ -360,20 +360,20 @@ module.exports.transactions = async (req, res) => {
 
             const r = await Login.updateMany({ phonenumber: fromphonenumber }, { $set: { balance: senbal, transactions: newsendertrans, sent: tsent, linedata: linedata1 } });
             const s = await Login.updateMany({ phonenumber: tophonenumber }, { $set: { balance: recbal, transactions: newtotrans, received: trec, linedata: linedata2 } });
-            const from = await client.messages
-                .create({
-                    body: `Amount of ${amount} debited from the account . Balance remaining : ${senbal}`,
-                    messagingServiceSid: 'MG2696cee6900054b082573a57248e838a',
-                    to: `+91${fromphonenumber}`
-                })
-                .then(message => console.log(message.sid));
-            const to = await client.messages
-                .create({
-                    body: `Amount of ${amount} credited to your  account . Balance remaining : ${recbal}`,
-                    messagingServiceSid: 'MG2696cee6900054b082573a57248e838a',
-                    to: `+91${tophonenumber}`
-                })
-                .then(message => console.log(message.sid));
+            // const from = await client.messages
+            //     .create({
+            //         body: `Amount of ${amount} debited from the account . Balance remaining : ${senbal}`,
+            //         messagingServiceSid: 'MG2696cee6900054b082573a57248e838a',
+            //         to: `+91${fromphonenumber}`
+            //     })
+            //     .then(message => console.log(message.sid));
+            // const to = await client.messages
+            //     .create({
+            //         body: `Amount of ${amount} credited to your  account . Balance remaining : ${recbal}`,
+            //         messagingServiceSid: 'MG2696cee6900054b082573a57248e838a',
+            //         to: `+91${tophonenumber}`
+            //     })
+            //     .then(message => console.log(message.sid));
 
 
 
